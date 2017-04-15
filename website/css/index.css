@@ -1,0 +1,59 @@
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  .bg {
+      /* The cover photo image */
+      background-image: url("../img/taxi_cover_photo.jpg");
+
+      /* Half height */
+      height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      opacity: 0.65;
+  }
+  .caption {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+  }
+  .caption span.border {
+    background-color: #111;
+    color: #fff;
+    padding: 14px;
+    font-size: 30px;
+    letter-spacing: 11px;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    /*position: fixed;*/
+    top: 0;
+    width: 100%;
+  }
+
+  li {
+      float: left;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #111;
+  }
