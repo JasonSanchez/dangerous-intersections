@@ -44,9 +44,6 @@ body, html {
   #table-container th {
     text-align: center;
   }
-  #nav {
-    display: none;
-  }
 
   ul {
     list-style-type: none;
