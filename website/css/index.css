@@ -41,8 +41,16 @@ body, html {
   .p1 {
     font-size: 15px;
   }
+  #table-container {
+    z-index: 10;
+  }
   #table-container th {
     text-align: center;
+    position: relative;
+  }
+  #nav {
+    position: fixed;
+    z-index: 100;
   }
 
   ul {
