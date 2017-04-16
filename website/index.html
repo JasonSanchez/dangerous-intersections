@@ -5,9 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="./css/index.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 </head>
 <body>
+
+<div class="preload">
+  <img src="https://macaulay.cuny.edu/eportfolios/messenger/files/2016/12/NYC_Traffic_Congestion_Wide.jpg" alt="">
+</div>
 
 <!-- Title Image -->
 <div id="home" class="bg">
@@ -19,32 +27,78 @@
 </div>
 
 <!-- Navigation -->
+<div id="nav">
 <ul>
   <li><a href="#home">Home</a></li>
-  <li><a href="#history">History of Accidents</a></li>
-  <li><a href="#interactivemap">Interactive Map</a></li>
+  <li><a href="#history">History of NYC Accidents</a></li>
+  <li><a href="#methodology">Methodology</a></li>
+  <li><a href="#interactive_map">Interactive Map</a></li>
+  <li><a href="#data_table">Intersection Scores</a></li>
 </ul>
+</div>
+<!-- Delay displaying nav bar until after scrolling starts. -->
+<script type="text/javascript">
+  window.addEventListener("scroll", function() {
+      $("#nav").fadeIn("slow"); }, false);
+</script>
 
 <!-- Timeseries Graphs -->
 <section id="history" class="w3-container w3-center w3-content" style="max-width:1000px">
-  <h2 class="w3-wide">History of Accidents</h2>
-  <p class="w3-justify">Did you know that New York City has had over <strong>150k accidents</strong> every year for the past 4 years? Click on the dots at the bottom to switch between Yearly/Monthly/Daily views of the data.</p>
+  <div class="w3-padding-24"></div>
+  <h2 class="w3-wide w3-text-blue">History of NYC Accidents</h2>
+  <p class="w3-justify p1">Did you know that New York City has over <strong>150k accidents</strong> on average every year. In fact, this number has <strong>not significantly decreased</strong> in the past 4 years. Each year, city planners and the local government have to make hard tradeoffs to determine where to spend their budget on improving and maintaining the safety of their roads. We believe that by exposing the right data to them, they will be better able to prioritize which intersections they should be focus on.</p>
+  <p class="w3-justify p1">To explore the historical accident data, click on the dots at the bottom to switch between yearly/monthly/daily views of the data.</p>
   <iframe src="./accidents_timeseries_slideshow.html" style="width:100%;min-height:500px"></iframe>
 </section>
 
-<!-- Interactive Map -->
-<section id="interactivemap" class="w3-container w3-center w3-content" style="max-width:1000px">
-  <h2 class="w3-wide">Interactive map</h2>
-  <p class="w3-justify">Zoom in on any area of the map. In heat map view, warmer colors represent more dangerous intersections. In detailed view, red color markers represent the most dangerous intersections, blue markers represent moderately dangerous intersections, and green markers represent least dangerous intersections. Click on any marker to see more details about that intersection.</p>
-  <iframe src="./agg_accidents_map.html" style="width:100%;min-height:500px"></iframe>
+<!-- Methodology -->
+<section id="methodology" class="w3-container w3-center w3-content" style="max-width:1000px">
+  <div class="w3-padding-24"></div>
+  <h2 class="w3-wide w3-text-blue">Methodology</h2>
+  <p class="w3-justify p1">For our accident data, we collected and parsed over <strong>1M collision records between 2013-2016</strong>, mapping each collision to the nearest intersection. These records were obtained from <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">NYC OpenData</a>.</p>
+  <p class="w3-justify p1">To estimate traffic, we collected and parsed over <strong>20M(??) taxi pick-up and drop-off records between 2013-2016 (??)</strong>. These records were obtained from <a href="http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml">www.nyc.gov</a>. We computed the shortest path between each of these pick-up and drop-off locations to approximate traffic. After computing all trips, we aggregated these trips to determine how many times each intersection was passed through to come up with a proxy for traffic flow.</p>
+  <p class="w3-justify p1">After computing aggregate accident and traffic numbers for each intersection, we then computed a safety score using the following formula:</p>
+  <p class="w3-center p1"><strong>Formula: Accident / Traffic = Score</strong></p>
+  <p class="w3-center p1"><strong>Formula: (Score - Min) / (Max - Min) = Normalized Score*</strong></p>
+  <p class="w3-center p2"><em>*Normalized scores closer to 1 are considered more dangerous.</em></p>
 </section>
+
+<!-- Interactive Map -->
+<section id="interactive_map" class="w3-container w3-center w3-content" style="max-width:1000px">
+  <div class="w3-padding-24"></div>
+  <h2 class="w3-wide w3-text-blue">Interactive map</h2>
+  <p class="w3-justify p1">We've taken accident data, traffic data, and our computed intersection scores and plotted them on a map to easily identify areas that could benefit the most from improvement. There are 2 layering options: heat map and detailed markers. In the heat map view, warmer colors represent more dangerous intersections. In the detailed view, red color markers represent the most dangerous intersections, blue markers represent moderately dangerous intersections, and green markers represent least dangerous intersections. Click on any individual marker to see more details about that intersection.</p>
+  <iframe src="./heatmap_traffic_scores_v2.html" style="width:100%;min-height:500px"></iframe>
+</section>
+
+<!-- Data Table -->
+<section id="data_table" class="w3-container w3-center w3-content" style="max-width:1000px">
+  <div class="w3-padding-24"></div>
+  <h2 class="w3-wide w3-text-blue">Intersection Scores</h2>
+  <p class="w3-justify p1">To provide additional insight, we've created a data table that contains data about each intersection using accident data over the last 4 years. This table is scorted by safety score by default, showing the most dangerous intersections first. However, you can sort by additional dimensions or search for interesting intersections.</p>
+  <div class="w3-padding-12"></div>
+  <div id='table-container'></div>
+  <!-- Add button for downloading data -->
+  <p><a class="btn btn-info" href="./data/accident_scores_data_all.csv">
+      <i class='fa fa-download'></i> Download as CSV</a></p>
+</section>
+
+<div class="w3-padding-24"></div>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge">
-  <p class="w3-medium">Brought to you by Annie Lee, Jason Sanchez, William Oldfather</p>
-  <a href="https://github.com/JasonSanchez/dangerous-intersections" class="w3-large"><i class="fa fa-github"></i>Source Code</a>
+  <p class="w3-medium">Created by Annie Lee, Jason Sanchez, William Oldfather</p>
+  <a href="https://github.com/JasonSanchez/dangerous-intersections" class="w3-large"><i class="fa fa-github"></i> Source Code</a>
 </footer>
 
+<!-- Load extra scripts later so initial page loads faster. -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.3/jquery.csv.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- Script that loads data table. -->
+<script src="./js/accidents_data_table.js"></script>
 </body>
 </html>
 
