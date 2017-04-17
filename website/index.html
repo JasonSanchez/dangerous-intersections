@@ -51,11 +51,10 @@
   <div class="w3-padding-24"></div>
   <h2 class="w3-wide w3-text-blue">Methodology</h2>
   <p class="w3-justify p1">For our accident data, we collected and parsed over <strong>1M collision records between 2013-2016</strong>, mapping each collision to the nearest intersection. These records were obtained from <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">NYC OpenData</a>.</p>
-  <p class="w3-justify p1">To estimate traffic, we collected and parsed over <strong>20M(??) taxi pick-up and drop-off records between 2013-2016 (??)</strong>. These records were obtained from <a href="https://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml">www.nyc.gov</a>. We computed the shortest path between each of these pick-up and drop-off locations to approximate traffic. After computing all trips, we aggregated these trips to determine how many times each intersection was passed through to come up with a proxy for traffic flow.</p>
-  <p class="w3-justify p1">After computing aggregate accident and traffic numbers for each intersection, we then computed a safety score using the following formula:</p>
+  <p class="w3-justify p1">To estimate traffic, we collected and parsed over <strong>10M taxi pick-up and drop-off records in January 2016</strong>. These records were obtained from <a href="https://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml">www.nyc.gov</a>. We computed the shortest path between each of these pick-up and drop-off locations to approximate traffic. After computing all trips, we aggregated these trips to determine how many times each intersection was passed through to come up with a proxy for traffic flow.</p>
+  <p class="w3-justify p1">After computing aggregate accident and traffic numbers for each intersection, we then computed a raw score using the following formula:</p>
   <p class="w3-center p1"><strong>Formula: Accident / Traffic = Score</strong></p>
-  <p class="w3-center p1"><strong>Formula: (Score - Min) / (Max - Min) = Normalized Score*</strong></p>
-  <p class="w3-center p2"><em>*Normalized scores closer to 1 are considered more dangerous.</em></p>
+  <p class="w3-center p1">Then, we computed a <strong>Bucketed Score</strong> based on the percentile the raw score is in. This allows us to compare how dangerous each intersection is relative to other intersections. The bucketed scores range from 1-10, with 10 being the most dangerous.</p>
 </section>
 
 <!-- Interactive Map -->
@@ -70,7 +69,7 @@
 <section id="data_table" class="w3-container w3-center w3-content" style="max-width:1000px">
   <div class="w3-padding-24"></div>
   <h2 class="w3-wide w3-text-blue">Intersection Scores</h2>
-  <p class="w3-justify p1">To provide additional insight, we've created a data table that contains data about each intersection using accident data over the last 4 years. This table is scorted by safety score by default, showing the most dangerous intersections first. However, you can sort by additional dimensions or search for interesting intersections.</p>
+  <p class="w3-justify p1">To provide additional insight, we've created a data table that contains data about each intersection using accident data in 2016. This table is scorted by bucketed score by default, showing the most dangerous intersections first. However, you can sort by additional dimensions or search for interesting intersections.</p>
   <div class="w3-padding-12"></div>
   <div id='table-container'></div>
   <!-- Add button for downloading data -->

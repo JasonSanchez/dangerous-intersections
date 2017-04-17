@@ -1,6 +1,6 @@
 var el = "table-container";
 window.onload = function () {
-    var data_path = "./data/accident_scores_data_all.csv"
+    var data_path = "./data/accident_scores_data_16.csv"
 
     $("#" + el).html("<table class='table table-striped table-condensed' id='" + el + "-table'></table>");
 
@@ -24,6 +24,7 @@ window.onload = function () {
 }
 
 function populateTable(csv_data, i) {
+    console.log("populateTable called!");
     if (i == undefined) {
         i = 1;
     }
@@ -36,6 +37,7 @@ function populateTable(csv_data, i) {
         var nextBitOfWork = function() {
             populateTable(csv_data, i + batchSize);
         };
+        nextBitOfWork();
     }
 }
 
@@ -53,6 +55,7 @@ function generateTable() {
         "paging": true,
         "columns": [
           {"type": "num"},
+          {"type": "string"},
           {"type": "num"},
           {"type": "num"},
           {"type": "num"},
