@@ -1,4 +1,4 @@
-Bucketed Score,Intersection,Lat,Long,Raw Score,# Accidents,Traffic
+Bucketed Score,Intersection,Lat,Long,Raw Score,Accidents,Traffic
 10.0,Harlem River Drive,40.8305431,-73.9361119,0.5333,8,15
 10.0,N/A,40.849732,-73.9421511,0.5,1,2
 10.0,N/A,40.784945,-73.9408028,0.3182,7,22

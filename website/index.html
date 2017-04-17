@@ -53,8 +53,8 @@
   <p class="w3-justify p1">For our accident data, we collected and parsed over <strong>1M collision records between 2013-2016</strong>, mapping each collision to the nearest intersection. These records were obtained from <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">NYC OpenData</a>.</p>
   <p class="w3-justify p1">To estimate traffic, we collected and parsed over <strong>10M taxi pick-up and drop-off records in January 2016</strong>. These records were obtained from <a href="https://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml">www.nyc.gov</a>. We computed the shortest path between each of these pick-up and drop-off locations to approximate traffic. After computing all trips, we aggregated these trips to determine how many times each intersection was passed through to come up with a proxy for traffic flow.</p>
   <p class="w3-justify p1">After computing aggregate accident and traffic numbers for each intersection, we then computed a raw score using the following formula:</p>
-  <p class="w3-center p1"><strong>Formula: Accident / Traffic = Score</strong></p>
-  <p class="w3-center p1">Then, we computed a <strong>Bucketed Score</strong> based on the percentile the raw score is in. This allows us to compare how dangerous each intersection is relative to other intersections. The bucketed scores range from 1-10, with 10 being the most dangerous.</p>
+  <p class="w3-center p1"><strong>Formula: Accident / Traffic = Raw Score</strong></p>
+  <p class="w3-justify p1">Then, we computed a <strong>Bucketed Score</strong> based on the percentile the raw score is in. This allows us to compare how dangerous each intersection is relative to other intersections. The bucketed scores range from 1-10, with 10 being the most dangerous.</p>
 </section>
 
 <!-- Interactive Map -->

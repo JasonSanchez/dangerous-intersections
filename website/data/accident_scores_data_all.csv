@@ -1,4 +1,4 @@
-Bucketed Score,Intersection,Lat,Long,Raw Score,# Accidents,Traffic
+Bucketed Score,Intersection,Lat,Long,Raw Score,Accidents,Traffic
 10.0,N/A,40.7890262,-73.9823373,0.8537,35,41
 10.0,N/A,40.7943982,-73.9783745,0.85,17,20
 10.0,10th Avenue & West 205th Street,40.8631643,-73.9198437,0.8125,13,16

@@ -1,4 +1,4 @@
-Bucketed Score,Intersection,Lat,Long,Raw Score,# Accidents,Traffic
+Bucketed Score,Intersection,Lat,Long,Raw Score,Accidents,Traffic
 10.0,Washington Bridge,40.847668,-73.929669,0.5,1,2
 10.0,Williamsburg Bridge,40.7173688,-73.9841411,0.4348,10,23
 10.0,N/A,40.8007671,-73.9348639,0.359,14,39

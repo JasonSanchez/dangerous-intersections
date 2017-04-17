@@ -1,4 +1,4 @@
-Bucketed Score,Intersection,Lat,Long,Raw Score,# Accidents,Traffic
+Bucketed Score,Intersection,Lat,Long,Raw Score,Accidents,Traffic
 10.0,Harlem River Drive,40.8305431,-73.9361119,0.5333,8,15
 10.0,Amsterdam Avenue & West 179th Street,40.8467983,-73.9318397,0.3889,21,54
 10.0,Williamsburg Bridge,40.7173688,-73.9841411,0.3043,7,23

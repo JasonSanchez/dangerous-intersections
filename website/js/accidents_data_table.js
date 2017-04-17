@@ -24,7 +24,6 @@ window.onload = function () {
 }
 
 function populateTable(csv_data, i) {
-    console.log("populateTable called!");
     if (i == undefined) {
         i = 1;
     }
